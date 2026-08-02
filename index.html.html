@@ -1,0 +1,2003 @@
+index
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upstart-Labs, The Human Layer of Adoption</title>
+    <meta name="description"
+        content="Upstart-Labs helps enterprise organizations and higher education institutions align people with process and technology, the human layer of complex product, AI, and organizational adoption." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap"
+        rel="stylesheet" />
+
+    <!-- STYLE NOTE: No em dashes or en dashes anywhere in this document. Use commas, periods, colons, or parentheses. -->
+
+    <style>
+        :root {
+            --paper: #f7f6f2;
+            --sand: #ece9e1;
+            --soft: #e3e0d8;
+            --ink: #191918;
+            --muted: #5f5d57;
+            --light-muted: #656359;
+            --line: #d2cfc6;
+            --orange: #f45122;
+            --orange-cta: #c8380e;
+            --orange-text: #c8380e;
+            --white: #ffffff;
+            --serif: "Newsreader", Georgia, serif;
+            --sans: "DM Sans", Arial, sans-serif;
+            --mono: "DM Mono", monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--orange-text);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--orange-cta);
+            outline-offset: 4px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 56px));
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(247, 246, 242, 0.94);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+        }
+
+        .header-inner {
+            min-height: 82px;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            width: fit-content;
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.19em;
+            text-transform: uppercase;
+        }
+
+        .brand-mark,
+        .eyebrow-dot {
+            width: 11px;
+            height: 11px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: var(--orange);
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* BUTTONS */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border: 1px solid var(--orange-cta);
+            border-radius: 999px;
+            background: var(--orange-cta);
+            color: var(--white);
+            padding: 15px 22px;
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            line-height: 1;
+            text-transform: uppercase;
+            transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+        }
+
+        .button:hover {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .button-small {
+            padding: 12px 17px;
+            font-size: 10px;
+        }
+
+        .button-quiet {
+            border-color: var(--ink);
+            background: transparent;
+            color: var(--ink);
+        }
+
+        .button-quiet:hover {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+        .button-dark {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .button-dark:hover {
+            background: var(--white);
+            border-color: var(--white);
+            color: var(--ink);
+        }
+
+        /* TYPE */
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: calc(100vh - 82px);
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+            align-items: center;
+            gap: 72px;
+            padding-top: 74px;
+            padding-bottom: 84px;
+        }
+
+        .hero h1 {
+            max-width: 760px;
+            margin: 28px 0 28px;
+            font-family: var(--serif);
+            font-size: clamp(4rem, 7vw, 7.3rem);
+            font-weight: 300;
+            letter-spacing: -0.065em;
+            line-height: 0.91;
+        }
+
+        .hero h1 em,
+        h2 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .hero-intro {
+            max-width: 620px;
+            margin: 0;
+            color: #4d4c48;
+            font-size: 18px;
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 17px;
+            margin-top: 34px;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 4px;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .text-link span {
+            color: var(--orange-text);
+            font-size: 18px;
+            font-weight: 400;
+            transition: transform 180ms ease;
+        }
+
+        .text-link:hover span {
+            transform: translateX(4px);
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 22px;
+            margin-top: 60px;
+            color: var(--light-muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-meta span+span {
+            position: relative;
+            padding-left: 22px;
+        }
+
+        .hero-meta span+span::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--orange);
+            content: "";
+            transform: translateY(-50%);
+        }
+
+        /* HERO VISUAL */
+        .hero-visual {
+            min-width: 0;
+        }
+
+        .visual-kicker {
+            margin-bottom: 14px;
+            color: var(--light-muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .alignment-stage {
+            position: relative;
+            min-height: 520px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: linear-gradient(rgba(140, 137, 128, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(140, 137, 128, 0.18) 1px, transparent 1px), radial-gradient(circle at 50% 50%, #ffffff 0%, var(--paper) 64%);
+            background-size: 42px 42px, 42px 42px, auto;
+        }
+
+        .alignment-stage::after {
+            position: absolute;
+            right: 18px;
+            bottom: 16px;
+            color: var(--light-muted);
+            content: "UPSTART / 001";
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.16em;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(95, 93, 87, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-large {
+            width: min(87%, 480px);
+            aspect-ratio: 1;
+            transform: translate(-50%, -50%) rotate(-19deg) scaleY(0.73);
+        }
+
+        .orbit-small {
+            width: min(62%, 340px);
+            aspect-ratio: 1;
+            border-color: rgba(244, 81, 34, 0.55);
+            transform: translate(-50%, -50%) rotate(21deg) scaleY(0.72);
+        }
+
+        .stage-crosshair {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: rgba(95, 93, 87, 0.25);
+        }
+
+        .stage-crosshair.vertical {
+            top: 10%;
+            left: 50%;
+            width: 1px;
+            height: 80%;
+        }
+
+        .layer {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 14px;
+            border: 1px solid var(--line);
+            background: rgba(247, 246, 242, 0.97);
+            box-shadow: 0 8px 24px rgba(25, 25, 24, 0.08);
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .layer-number {
+            color: var(--orange-text);
+            font-size: 9px;
+        }
+
+        .layer-strategy {
+            top: 19%;
+            left: 7%;
+        }
+
+        .layer-build {
+            top: 27%;
+            right: 7%;
+        }
+
+        .layer-people {
+            bottom: 21%;
+            left: 13%;
+        }
+
+        .alignment-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            width: 128px;
+            height: 128px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            border-radius: 50%;
+            background: var(--orange-cta);
+            color: var(--white);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 10px rgba(244, 81, 34, 0.12);
+        }
+
+        .core-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--white);
+        }
+
+        .visual-footer {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 13px;
+            color: var(--light-muted);
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .trust-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            padding: 22px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.13em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* DOWNLOAD STRIP (new, more visible) */
+        .download-strip {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 26px 0;
+        }
+
+        .download-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .download-inner .label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--paper);
+        }
+
+        .download-inner .label-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--orange);
+            flex: 0 0 auto;
+        }
+
+        .download-inner .desc {
+            color: #b0ada4;
+            font-size: 14px;
+            margin: 0;
+            max-width: 460px;
+        }
+
+        .download-inner .button {
+            border-color: var(--paper);
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        .download-inner .button:hover {
+            background: var(--orange-cta);
+            border-color: var(--orange-cta);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* PRINCIPLE BAND */
+        .principle {
+            padding: 118px 0;
+            text-align: center;
+        }
+
+        .principle-eyebrow {
+            margin: 0;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .principle-statement {
+            max-width: 1000px;
+            margin: 24px auto 0;
+            font-family: var(--serif);
+            font-size: clamp(2.6rem, 5vw, 4.7rem);
+            font-weight: 300;
+            letter-spacing: -0.045em;
+            line-height: 1.02;
+        }
+
+        .principle-statement em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 130px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 68px;
+        }
+
+        .section-index {
+            margin: 0;
+            color: var(--light-muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .diagnosis {
+            background: var(--sand);
+        }
+
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 92px;
+            align-items: end;
+        }
+
+        h2 {
+            max-width: 790px;
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(3.3rem, 5.8vw, 6.2rem);
+            font-weight: 300;
+            letter-spacing: -0.065em;
+            line-height: 0.94;
+        }
+
+        .body-large {
+            margin: 0;
+            color: #4d4c48;
+            font-size: 19px;
+            line-height: 1.65;
+        }
+
+        .highlight-box {
+            margin-top: 65px;
+            padding: 30px 34px;
+            border-left: 3px solid var(--orange);
+            background: rgba(255, 254, 250, 0.7);
+        }
+
+        .highlight-box p {
+            max-width: 900px;
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 3vw, 3rem);
+            font-weight: 300;
+            letter-spacing: -0.035em;
+            line-height: 1.06;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            margin-top: 1px;
+            background: var(--line);
+        }
+
+        .audience-card {
+            padding: 33px;
+            background: var(--sand);
+        }
+
+        .audience-card h3 {
+            margin: 0 0 11px;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .audience-card p {
+            max-width: 470px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* CAPABILITIES */
+        .capabilities-header {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            align-items: end;
+        }
+
+        .capabilities-header h2 {
+            font-size: clamp(3.2rem, 5vw, 5.2rem);
+        }
+
+        .capabilities-header .body-large {
+            max-width: 510px;
+            justify-self: end;
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1px;
+            margin-top: 70px;
+            border: 1px solid var(--line);
+            background: var(--line);
+        }
+
+        .capability-card {
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            padding: 29px;
+            background: var(--paper);
+        }
+
+        .capability-card:nth-child(1),
+        .capability-card:nth-child(2) {
+            grid-column: span 3;
+        }
+
+        .capability-card:nth-child(3),
+        .capability-card:nth-child(4),
+        .capability-card:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        .card-number {
+            margin-bottom: auto;
+            color: var(--orange-text);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.13em;
+        }
+
+        .capability-card h3 {
+            max-width: 260px;
+            margin: 32px 0 12px;
+            font-size: 19px;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+
+        .capability-card p {
+            max-width: 310px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .card-tag {
+            margin-top: 25px;
+            color: var(--light-muted);
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        /* CAPABILITIES DOWNLOAD CTA (new, in-section) */
+        .capabilities-cta {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+            margin-top: 45px;
+            padding: 32px 34px;
+            border: 1px solid var(--ink);
+            background: var(--paper);
+        }
+
+        .capabilities-cta h3 {
+            margin: 0 0 6px;
+            font-family: var(--serif);
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+        }
+
+        .capabilities-cta p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* SPEAKING */
+        .speaking-section {
+            overflow: hidden;
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .speaking-section .eyebrow,
+        .speaking-section .section-index {
+            color: #a29f96;
+        }
+
+        .speaking-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .speaking-section h2 {
+            color: var(--paper);
+            font-size: clamp(3.5rem, 5.5vw, 6rem);
+        }
+
+        .speaking-intro {
+            max-width: 450px;
+            margin: 30px 0 0;
+            color: #c3c0b8;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .formats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .format-pill {
+            padding: 9px 12px;
+            border: 1px solid rgba(247, 246, 242, 0.38);
+            border-radius: 999px;
+            color: var(--paper);
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* AIxUX BANNER (new image slot) */
+        .summit-banner {
+            position: relative;
+            margin-top: 70px;
+            overflow: hidden;
+            border: 1px solid rgba(247, 246, 242, 0.2);
+        }
+
+        .summit-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            max-height: 260px;
+        }
+
+        .summit-banner-caption {
+            position: absolute;
+            left: 26px;
+            bottom: 22px;
+            right: 26px;
+            color: var(--paper);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: rgba(25, 25, 24, 0.55);
+            padding: 10px 14px;
+            display: inline-block;
+        }
+
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            border: 1px solid rgba(247, 246, 242, 0.22);
+            background: rgba(247, 246, 242, 0.22);
+        }
+
+        .stat {
+            padding: 26px 22px;
+            background: var(--ink);
+        }
+
+        .stat .num {
+            display: block;
+            font-family: var(--serif);
+            font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            color: var(--paper);
+        }
+
+        .stat .label {
+            display: block;
+            margin-top: 10px;
+            color: #b0ada4;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.5;
+        }
+
+        .engagements-title {
+            margin: 90px 0 8px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #a29f96;
+        }
+
+        .engagements {
+            border-top: 1px solid rgba(247, 246, 242, 0.22);
+        }
+
+        .engagement {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 30px;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(247, 246, 242, 0.22);
+        }
+
+        .engagement h3 {
+            margin: 0 0 8px;
+            font-family: var(--serif);
+            font-size: 27px;
+            font-weight: 400;
+            letter-spacing: -0.035em;
+            line-height: 1.02;
+            color: var(--paper);
+        }
+
+        .eng-context {
+            color: #b0ada4;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .eng-role {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--orange);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .engagement p {
+            margin: 0;
+            max-width: 560px;
+            color: #c3c0b8;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* FEATURED TALK (now with image) */
+        .featured-talk {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            margin-top: 55px;
+            border: 1px solid rgba(247, 246, 242, 0.25);
+            background: rgba(247, 246, 242, 0.05);
+            align-items: stretch;
+        }
+
+        .featured-talk-image {
+            position: relative;
+            overflow: hidden;
+            background: #0e0e0d;
+            min-height: 200px;
+        }
+
+        .featured-talk-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .featured-talk-image .play {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-talk-image .play span {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            padding-left: 4px;
+        }
+
+        .featured-talk-body {
+            padding: 30px 34px;
+            align-self: center;
+        }
+
+        .featured-talk .kicker {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--orange);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .featured-talk h3 {
+            margin: 0 0 8px;
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3vw, 2.7rem);
+            font-weight: 300;
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            color: var(--paper);
+        }
+
+        .featured-talk .source {
+            margin: 0;
+            color: #b0ada4;
+            font-size: 14px;
+        }
+
+        .engagement-note {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 45px;
+            margin-top: 55px;
+            padding: 34px;
+            background: var(--orange);
+            color: var(--ink);
+        }
+
+        .engagement-note .eyebrow {
+            color: var(--ink);
+        }
+
+        .engagement-note h3 {
+            max-width: 420px;
+            margin: 16px 0 0;
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-weight: 300;
+            letter-spacing: -0.045em;
+            line-height: 0.98;
+        }
+
+        .engagement-note p {
+            align-self: end;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* APPROACH */
+        .approach {
+            background: var(--paper);
+        }
+
+        .approach-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: end;
+            margin-bottom: 65px;
+        }
+
+        .approach-header h2 {
+            font-size: clamp(3.1rem, 5vw, 5.1rem);
+        }
+
+        .approach-header p {
+            max-width: 490px;
+            justify-self: end;
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .step-card {
+            padding-top: 22px;
+            border-top: 1px solid var(--ink);
+        }
+
+        .step-card .step-number {
+            color: var(--orange-text);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+        }
+
+        .step-card h3 {
+            margin: 44px 0 12px;
+            font-family: var(--serif);
+            font-size: 34px;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+        }
+
+        .step-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* PROOF */
+        .proof-section {
+            padding: 125px 0;
+            background: var(--soft);
+        }
+
+        .proof-layout {
+            display: grid;
+            grid-template-columns: 0.35fr 1.65fr;
+            gap: 45px;
+        }
+
+        .quote-mark {
+            color: var(--orange-text);
+            font-family: var(--serif);
+            font-size: 130px;
+            font-weight: 300;
+            line-height: 0.65;
+        }
+
+        blockquote {
+            max-width: 900px;
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 5.2vw, 5.8rem);
+            font-weight: 300;
+            letter-spacing: -0.06em;
+            line-height: 0.94;
+        }
+
+        .quote-attribution {
+            margin: 28px 0 0;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .quote-context {
+            max-width: 610px;
+            margin: 30px 0 0;
+            color: #4d4b46;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* FOUNDER */
+        .founder-section {
+            padding: 130px 0;
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 0.72fr 1.28fr;
+            gap: 95px;
+            align-items: center;
+        }
+
+        .founder-mark {
+            position: relative;
+            min-height: 520px;
+            overflow: hidden;
+            margin: 0;
+            background: var(--ink);
+        }
+
+        .founder-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            z-index: 0;
+        }
+
+        .founder-mark::after {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 52%, rgba(12, 12, 11, 0.85));
+            content: "";
+        }
+
+        .founder-mark-label {
+            position: absolute;
+            right: 26px;
+            bottom: 24px;
+            left: 26px;
+            z-index: 2;
+            color: #ffffff;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            line-height: 1.7;
+            text-transform: uppercase;
+        }
+
+        .founder-copy h2 {
+            margin: 25px 0 25px;
+            font-size: clamp(3rem, 5vw, 5.2rem);
+        }
+
+        .founder-copy p {
+            max-width: 600px;
+            margin: 0 0 19px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .credential-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .credential {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .credential::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--orange);
+            content: "";
+        }
+
+        /* CONTACT */
+        .contact-section {
+            padding: 105px 0;
+            background: var(--orange);
+            color: var(--ink);
+        }
+
+        .contact-section .eyebrow {
+            color: var(--ink);
+        }
+
+        .contact-inner {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 55px;
+        }
+
+        .contact-section h2 {
+            max-width: 700px;
+            margin: 21px 0 22px;
+            font-size: clamp(4.1rem, 8vw, 8rem);
+            line-height: 0.84;
+        }
+
+        .contact-copy {
+            max-width: 500px;
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        /* FOOTER */
+        .site-footer {
+            padding: 25px 0;
+            background: var(--orange);
+            border-top: 1px solid rgba(25, 25, 24, 0.35);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-inner .brand {
+            font-size: 11px;
+        }
+
+        .footer-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 9px 18px;
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-details a {
+            color: var(--ink);
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1050px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero-copy {
+                max-width: 800px;
+            }
+
+            .hero-visual {
+                max-width: 720px;
+            }
+
+            .hero h1 {
+                font-size: clamp(4rem, 10vw, 7rem);
+            }
+
+            .diagnosis-grid,
+            .speaking-grid,
+            .founder-grid {
+                gap: 55px;
+            }
+
+            .capabilities-header {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                width: min(100% - 38px, 680px);
+            }
+
+            .header-inner {
+                grid-template-columns: 1fr auto;
+                min-height: 72px;
+            }
+
+            .header-nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 65px;
+                padding-bottom: 75px;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.7rem, 12vw, 6.5rem);
+            }
+
+            .principle {
+                padding: 90px 0;
+            }
+
+            .section {
+                padding: 92px 0;
+            }
+
+            .section-header {
+                margin-bottom: 45px;
+            }
+
+            .diagnosis-grid,
+            .capabilities-header,
+            .speaking-grid,
+            .approach-header,
+            .founder-grid,
+            .proof-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .diagnosis-grid {
+                gap: 35px;
+            }
+
+            .capabilities-header .body-large,
+            .approach-header p {
+                justify-self: start;
+            }
+
+            .capability-grid {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 45px;
+            }
+
+            .capability-card:nth-child(1),
+            .capability-card:nth-child(2),
+            .capability-card:nth-child(3),
+            .capability-card:nth-child(4) {
+                grid-column: span 1;
+            }
+
+            .capability-card:nth-child(5) {
+                grid-column: 1 / -1;
+            }
+
+            .capabilities-cta {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .download-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .speaking-grid {
+                gap: 55px;
+            }
+
+            .stat-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .engagement {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .featured-talk {
+                grid-template-columns: 1fr;
+            }
+
+            .engagement-note {
+                grid-template-columns: 1fr;
+                gap: 26px;
+                margin-top: 45px;
+            }
+
+            .engagements-title {
+                margin-top: 65px;
+            }
+
+            .approach-header {
+                gap: 32px;
+                margin-bottom: 45px;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .proof-layout {
+                gap: 20px;
+            }
+
+            .quote-mark {
+                font-size: 90px;
+            }
+
+            .founder-grid {
+                gap: 55px;
+            }
+
+            .founder-mark {
+                min-height: 380px;
+            }
+
+            .contact-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-details {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .brand {
+                font-size: 11px;
+                letter-spacing: 0.14em;
+            }
+
+            .header-inner .button-small {
+                padding: 11px 13px;
+                font-size: 9px;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.3rem, 15vw, 5.2rem);
+            }
+
+            .hero-intro {
+                font-size: 16px;
+            }
+
+            .hero-meta {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 40px;
+            }
+
+            .hero-meta span+span {
+                padding-left: 0;
+            }
+
+            .hero-meta span+span::before {
+                display: none;
+            }
+
+            .alignment-stage {
+                min-height: 410px;
+            }
+
+            .layer {
+                padding: 9px 10px;
+                font-size: 8px;
+            }
+
+            .layer-strategy {
+                top: 15%;
+                left: 4%;
+            }
+
+            .layer-build {
+                top: 24%;
+                right: 4%;
+            }
+
+            .layer-people {
+                bottom: 16%;
+                left: 7%;
+            }
+
+            .alignment-core {
+                width: 104px;
+                height: 104px;
+                font-size: 8px;
+            }
+
+            .trust-bar {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px 0;
+                font-size: 8px;
+            }
+
+            .principle-statement {
+                font-size: clamp(2.3rem, 9vw, 3rem);
+            }
+
+            .section-header {
+                display: block;
+            }
+
+            .section-index {
+                margin-top: 18px;
+            }
+
+            h2,
+            .capabilities-header h2,
+            .speaking-section h2,
+            .approach-header h2,
+            .founder-copy h2 {
+                font-size: clamp(3rem, 14vw, 5rem);
+            }
+
+            .highlight-box {
+                padding: 23px;
+            }
+
+            .highlight-box p {
+                font-size: 1.8rem;
+            }
+
+            .audience-grid,
+            .capability-grid,
+            .stat-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-card {
+                padding: 25px;
+            }
+
+            .capability-card:nth-child(n) {
+                grid-column: auto;
+                min-height: 245px;
+            }
+
+            .capabilities-cta,
+            .engagement-note {
+                padding: 25px;
+            }
+
+            blockquote {
+                font-size: clamp(2.7rem, 13vw, 4.5rem);
+            }
+
+            .founder-mark {
+                min-height: 340px;
+            }
+
+            .contact-section h2 {
+                font-size: clamp(4rem, 18vw, 7rem);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="Upstart-Labs home">
+                <span class="brand-mark"></span>
+                <span>Upstart-Labs, LLC</span>
+            </a>
+            <nav class="header-nav" aria-label="Primary navigation">
+                <a href="#capabilities">Capabilities</a>
+                <a href="#speaking">Speaking</a>
+                <a href="#founder">About</a>
+            </nav>
+            <a class="button button-small" href="mailto:alexis@upstart-labs.com?subject=Upstart-Labs%20conversation">
+                Get in touch <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero container">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> Strategy / Adoption / Design</p>
+                <h1>The <em>human layer</em> of complex product and organizational adoption.</h1>
+                <p class="hero-intro">New technology exposes what already isn't working: unclear ownership, workflows
+                    nobody agreed on, and decisions nobody wants to own. Upstart-Labs works on that layer, the point
+                    where strategy, technical build, and the people expected to use the result all have to line up.</p>
+                <div class="hero-actions">
+                    <a class="button" href="mailto:alexis@upstart-labs.com?subject=Upstart-Labs%20conversation">Start a
+                        conversation <span aria-hidden="true">↗</span></a>
+                    <a class="text-link" href="#capabilities">Explore capabilities <span aria-hidden="true">↓</span></a>
+                </div>
+                <div class="hero-meta">
+                    <span>Enterprise + Higher Education</span>
+                    <span>North Conway, NH</span>
+                </div>
+            </div>
+            <div class="hero-visual" aria-label="Strategy, build, and people brought into alignment">
+                <div class="visual-kicker">The work in between</div>
+                <div class="alignment-stage">
+                    <div class="orbit orbit-large"></div>
+                    <div class="orbit orbit-small"></div>
+                    <div class="stage-crosshair"></div>
+                    <div class="stage-crosshair vertical"></div>
+                    <div class="layer layer-strategy"><span class="layer-number">01</span> Strategy</div>
+                    <div class="layer layer-build"><span class="layer-number">02</span> Build</div>
+                    <div class="layer layer-people"><span class="layer-number">03</span> People</div>
+                    <div class="alignment-core"><span class="core-dot"></span><span>Align</span></div>
+                </div>
+                <div class="visual-footer">
+                    <span>Complexity</span>
+                    <span>Clarity</span>
+                    <span>Adoption</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container trust-bar" aria-label="Who Upstart-Labs serves">
+            <span>Built for complexity</span>
+            <span>Enterprise teams</span>
+            <span>Higher education</span>
+            <span>Change makers</span>
+        </div>
+
+        <!-- DOWNLOAD STRIP (new, unmissable) -->
+        <section class="download-strip">
+            <div class="container download-inner">
+                <div class="label"><span class="label-dot"></span> Capabilities Overview (PDF)</div>
+                <p class="desc">A one-page summary of services, positioning, and who this is for. Forward it to your
+                    team.</p>
+                <a class="button" href="Upstart-Labs_Capabilities.pdf" download>Download the PDF <span
+                        aria-hidden="true">↧</span></a>
+            </div>
+        </section>
+
+        <!-- PRINCIPLE -->
+        <section class="principle">
+            <div class="container">
+                <p class="principle-eyebrow">The operating principle</p>
+                <p class="principle-statement">Always keep the human layer, <em>aligning people with process and
+                        technology.</em></p>
+            </div>
+        </section>
+
+        <!-- WHO THIS IS FOR -->
+        <section class="section diagnosis" id="who">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> 01 / Who this is for</p>
+                    <p class="section-index">Upstart-Labs</p>
+                </div>
+                <div class="diagnosis-grid">
+                    <h2>Technology exposes what already <em>isn't working.</em></h2>
+                    <p class="body-large">We partner with enterprise organizations and higher education institutions
+                        where a product, process, or AI initiative is stalling on the human side.<br /><br />Whether it
+                        is unclear ownership, low adoption, or a gap between what leadership wants and what teams are
+                        building, we bridge the divide.</p>
+                </div>
+                <div class="highlight-box">
+                    <p>Organizations where a product, process, or AI initiative is stuck between leadership intent and
+                        everyday reality.</p>
+                </div>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <h3>Enterprise organizations</h3>
+                        <p>Align product, engineering, design, operations, and executive stakeholders around the work
+                            that matters most.</p>
+                    </div>
+                    <div class="audience-card">
+                        <h3>Higher education institutions</h3>
+                        <p>Navigate faculty concerns about AI, administrative system migrations, and the need to
+                            preserve critical thinking while preparing students for the future of work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAPABILITIES -->
+        <section class="section" id="capabilities">
+            <div class="container">
+                <div class="capabilities-header">
+                    <div>
+                        <p class="eyebrow"><span class="eyebrow-dot"></span> 02 / What we do</p>
+                        <h2>Make the next move <em>make sense.</em></h2>
+                    </div>
+                    <p class="body-large">Upstart-Labs brings strategic clarity, human-centered design, and practical
+                        adoption planning to complex initiatives, before the friction becomes expensive.</p>
+                </div>
+                <div class="capability-grid">
+                    <article class="capability-card"><span class="card-number">01</span>
+                        <h3>Product &amp; AI strategy</h3>
+                        <p>Roadmapping, prioritization, and use-case selection. Figure out which product or AI
+                            investments are worth making, and which aren't, before the build starts.</p><span
+                            class="card-tag">Clarity before build</span>
+                    </article>
+                    <article class="capability-card"><span class="card-number">02</span>
+                        <h3>Change management &amp; adoption</h3>
+                        <p>Prosci-certified change management applied to technology rollouts, including stakeholder
+                            alignment, communication planning, and adoption tracking.</p><span class="card-tag">Change
+                            that sticks</span>
+                    </article>
+                    <article class="capability-card"><span class="card-number">03</span>
+                        <h3>UX research &amp; product design</h3>
+                        <p>User research, information architecture, and end-to-end design starting from what people
+                            actually need, not what is easiest to build.</p><span class="card-tag">Designed for
+                            use</span>
+                    </article>
+                    <article class="capability-card"><span class="card-number">04</span>
+                        <h3>Stakeholder &amp; technical translation</h3>
+                        <p>Translate technical constraints into terms executives can act on, and leadership intent into
+                            requirements teams can build against.</p><span class="card-tag">Shared language</span>
+                    </article>
+                    <article class="capability-card"><span class="card-number">05</span>
+                        <h3>AI adoption advisory</h3>
+                        <p>Governance, workflow redesign, and planning for how people and AI systems work together day
+                            to day. Focused on adoption and judgment, not technical implementation.</p><span
+                            class="card-tag">Human + AI systems</span>
+                    </article>
+                </div>
+
+                <div class="capabilities-cta">
+                    <div>
+                        <h3>Want the one-pager?</h3>
+                        <p>Download the Upstart-Labs capabilities overview to share with your team.</p>
+                    </div>
+                    <a class="button" href="Upstart-Labs_Capabilities.pdf" download>Download the PDF <span
+                            aria-hidden="true">↧</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPEAKING -->
+        <section class="section speaking-section" id="speaking">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> 03 / Speaking &amp; facilitation</p>
+                    <p class="section-index">Keynotes / Workshops / Lectures</p>
+                </div>
+                <div class="speaking-grid">
+                    <div>
+                        <h2>Make the hard conversation <em>useful.</em></h2>
+                        <p class="speaking-intro">Alexis Brochu delivers keynotes, executive workshops, and university
+                            lectures on AI fluency, adoption, and the human side of technology. She works with
+                            leadership retreats, global summits, and educational institutions.</p>
+                        <div class="formats">
+                            <span class="format-pill">Keynote speaking</span>
+                            <span class="format-pill">Executive facilitation</span>
+                            <span class="format-pill">University lectures</span>
+                            <span class="format-pill">Interactive workshops</span>
+                        </div>
+                    </div>
+                    <div class="stat-strip" aria-label="Speaking credentials at a glance">
+                        <div class="stat"><span class="num">20+</span><span class="label">Years in product &amp;
+                                UX</span></div>
+                        <div class="stat"><span class="num">189%</span><span class="label">Summit attendance
+                                growth</span></div>
+                        <div class="stat"><span class="num">#1</span><span class="label">Ranked university in
+                                Chile</span></div>
+                        <div class="stat"><span class="num">PMP</span><span class="label">&amp; Prosci CMP
+                                certified</span></div>
+                    </div>
+                </div>
+
+                <!-- AIxUX SUMMIT BANNER (new image slot) -->
+                <figure class="summit-banner">
+                    <img src="aixux-summit-2026.jpg"
+                        alt="AIxUX Summit 2026 event banner featuring Alexis Brochu as closing keynote speaker" />
+                    <figcaption class="summit-banner-caption">Closing keynote, AIxUX Summit 2026 · Online / Global ·
+                        June 18 to 19, 2026</figcaption>
+                </figure>
+
+                <p class="engagements-title">Selected engagements</p>
+                <div class="engagements">
+                    <article class="engagement">
+                        <div>
+                            <h3>AIxUX Summit</h3><span class="eng-context">New York City · 2025</span>
+                        </div>
+                        <div><span class="eng-role">Speaker &amp; facilitator</span>
+                            <p>"Why Executives Don't Care About Your Design Work and What to Do About It."</p>
+                        </div>
+                    </article>
+                    <article class="engagement">
+                        <div>
+                            <h3>AIxUX Summit</h3><span class="eng-context">New York City · 2026</span>
+                        </div>
+                        <div><span class="eng-role">Closing keynote</span>
+                            <p>"Building Your AI Networking Agent." A paid two-day event alongside speakers from Google
+                                and Amazon. Paying attendance grew 189% over the prior summit.</p>
+                        </div>
+                    </article>
+                    <article class="engagement">
+                        <div>
+                            <h3>Global FinTech company</h3><span class="eng-context">NDA-protected project · Booked
+                                across year</span>
+                        </div>
+                        <div><span class="eng-role">Executive keynote speaker</span>
+                            <p>"AI Fluency for Compliance" and "Enterprise GenAI Governance, Risk Management &amp;
+                                Operational Guidance."</p>
+                        </div>
+                    </article>
+                    <article class="engagement">
+                        <div>
+                            <h3>International Humanitarian Organization</h3><span class="eng-context">NDA-protected
+                                project · In redesign</span>
+                        </div>
+                        <div><span class="eng-role">Keynote</span>
+                            <p>"AI Fluency for PMI Project Managers." Scoped for 30 to 40. 250 registered one month out
+                                against a 750 projection. Now being rebuilt as a multi-part program.</p>
+                        </div>
+                    </article>
+                    <article class="engagement">
+                        <div>
+                            <h3>Pontifical Catholic University of Chile</h3><span class="eng-context">PhD lecturer ·
+                                Fall 2026</span>
+                        </div>
+                        <div><span class="eng-role">Scheduled lecturer</span>
+                            <p>"Innovation in the Age of AI." Ranked #1 in Chile across a meta-ranking of 108 university
+                                rankings.</p>
+                        </div>
+                    </article>
+                    <article class="engagement">
+                        <div>
+                            <h3>UX Support Group (UXSG)</h3><span class="eng-context">Ongoing · Global</span>
+                        </div>
+                        <div><span class="eng-role">AI Core Team Instructor &amp; facilitator</span>
+                            <p>Co-hosts UXSG's weekly AIxUX thought-leadership forum with international participation,
+                                demos, and follow-up.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- FEATURED TALK (now with real thumbnail slot) -->
+                <div class="featured-talk">
+                    <div class="featured-talk-image">
+                        <img src="talk-executives.jpg"
+                            alt="Alexis Brochu presenting Why Executives Don't Care About Your Design Work" />
+                        <div class="play" aria-hidden="true"><span>▶</span></div>
+                    </div>
+                    <div class="featured-talk-body">
+                        <span class="kicker">Featured talk</span>
+                        <h3>"Why Executives Don't Care About Your Design Work (and How to Fix It)"</h3>
+                        <p class="source">AIxUX Summit · UX Support Group</p>
+                    </div>
+                </div>
+
+                <div class="engagement-note">
+                    <div>
+                        <p class="eyebrow">For higher education</p>
+                        <h3>Don't choose between AI fluency and critical thinking.</h3>
+                    </div>
+                    <div>
+                        <p>The concern about diminished critical thinking is real. So is the cost of leaving students
+                            unprepared for the tools they will encounter everywhere. The work is finding a thoughtful,
+                            responsible way forward. AI as a tool that sharpens judgment, not one that replaces it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPROACH -->
+        <section class="section approach" id="approach">
+            <div class="container">
+                <div class="approach-header">
+                    <div>
+                        <p class="eyebrow"><span class="eyebrow-dot"></span> 04 / The approach</p>
+                        <h2>From stuck <em>to moving.</em></h2>
+                    </div>
+                    <p>The work is tailored to the initiative, but the movement is consistent. Name the friction, align
+                        the people, and make the next step usable.</p>
+                </div>
+                <div class="approach-grid">
+                    <article class="step-card"><span class="step-number">01 / Name the friction</span>
+                        <h3>See what is really in the way.</h3>
+                        <p>Surface the ownership gaps, conflicting assumptions, workflow problems, and adoption barriers
+                            hiding underneath the initiative.</p>
+                    </article>
+                    <article class="step-card"><span class="step-number">02 / Align the people</span>
+                        <h3>Create shared language.</h3>
+                        <p>Bring leadership, technical teams, users, and stakeholders into a clearer conversation about
+                            what needs to happen next.</p>
+                    </article>
+                    <article class="step-card"><span class="step-number">03 / Make it usable</span>
+                        <h3>Turn clarity into movement.</h3>
+                        <p>Translate decisions into roadmaps, requirements, designs, communication plans, and adoption
+                            practices teams can carry forward.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL -->
+        <section class="proof-section" id="proof">
+            <div class="container proof-layout">
+                <div class="quote-mark" aria-hidden="true">"</div>
+                <div>
+                    <blockquote>This design elevates our project to another level.</blockquote>
+                    <p class="quote-attribution">Client presentation feedback / Enterprise SaaS company</p>
+                    <p class="quote-context">The presentation landed with more than approval. The client turned away
+                        from the camera with tears in her eyes. A memorable sign that the work had created clarity,
+                        confidence, and emotional alignment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER -->
+        <section class="founder-section" id="founder">
+            <div class="container founder-grid">
+                <figure class="founder-mark">
+                    <img class="founder-photo" src="alexis-brochu.jpg"
+                        alt="Portrait of Alexis Brochu, Founder of Upstart-Labs" />
+                    <figcaption class="founder-mark-label">
+                        Alexis Brochu<br />
+                        Founder · Principal, AI Product Strategist
+                    </figcaption>
+                </figure>
+                <div class="founder-copy">
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> 05 / About Upstart-Labs</p>
+                    <h2>The space between <em>intent and impact.</em></h2>
+                    <p>Alexis Brochu is a UX product manager and AI enablement specialist with 20+ years of experience,
+                        PMP and Prosci CMP certified. She founded Upstart-Labs to help organizations navigate the human
+                        layer of complex product, technology, and organizational change.</p>
+                    <p>She chairs Strategic AI Enablement for the New Hampshire Tech Alliance AI Task Force and co-hosts
+                        UXSG's weekly AIxUX meetup. Her work sits at the intersection of product strategy, UX research
+                        and design, change management, stakeholder alignment, and AI adoption. It is practical,
+                        human-centered, and built to help teams make better decisions together.</p>
+                    <div class="credential-list">
+                        <span class="credential">PMP certified</span>
+                        <span class="credential">Prosci CMP</span>
+                        <span class="credential">NH Tech Alliance AI Task Force, Chair</span>
+                        <span class="credential">20+ years product &amp; UX</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <div class="container contact-inner">
+                <div>
+                    <p class="eyebrow">Start the conversation</p>
+                    <h2>Ready to get unstuck?</h2>
+                    <p class="contact-copy">Bring the complicated initiative, the difficult rollout, or the conversation
+                        your team has been avoiding.</p>
+                </div>
+                <div class="contact-action">
+                    <a class="button button-dark"
+                        href="mailto:alexis@upstart-labs.com?subject=Upstart-Labs%20conversation&amp;body=Hi%20Alexis%2C%0A%0AI%27d%20like%20to%20talk%20about...">Email
+                        Alexis <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand" href="#top"><span class="brand-mark"></span><span>Upstart-Labs, LLC</span></a>
+            <div class="footer-details">
+                <span>Alexis Brochu</span>
+                <a href="mailto:alexis@upstart-labs.com">alexis@upstart-labs.com</a>
+                <span>North Conway, NH</span>
+                <span>© <span id="year"></span></span>
+            </div>
+        </div>
+    </footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+
+</html>
